@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "firstName": "Darcy",
+    "lastName": "Christiansen",
+    "phone": "0120-234-5678",
+    "company": "Tillman Brothers",
+    "project": "CRM Project",
+    "notes": "Note"
+  },
+  {
+    "id": 2,
+    "firstName": "Jackson",
+    "lastName": "Keeling",
+    "phone": "0120-123-4567",
+    "company": "Rose - White",
+    "project": "CRM Project",
+    "notes": "Note"
+  },
+  {
+    "id": 3,
+    "firstName": "Lucas",
+    "lastName": "Jackson",
+    "phone": "0120-234-5678",
+    "company": "Anderson Pty Ltd",
+    "project": "CRM Project",
+    "notes": "Note"
+  }
+]
