@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   StyleSheet,
+  Text,
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import PeopleItem from './PeopleItem';
 import PeopleDetail from './PeopleDetail';
+import { loadInitialContacts } from '../actions';
 
-const PeopleList = (props) => {
+class PeopleList extends Component {
 
-  const InitialView = () => {
-    if (props.detailView) {
+  componentDidMount() {
+    this.props.loadInitialContacts();
+  }
+
+  renderInitialView = () => {
+    if (this.props.detailView) {
       return (
         <PeopleDetail />
+      );
+    } else if (this.props.people.length === 0) {
+      return (
+        <Text style={styles.textStyles}>No contacts found.</Text>
       );
     } else {
       return (
         <FlatList
-          data={props.people}
+          data={this.props.people}
           renderItem={({ item }) => <PeopleItem people={item} />}
           keyExtractor={(item, index) => index.toString()}
         />
@@ -27,16 +37,18 @@ const PeopleList = (props) => {
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <InitialView />
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.containerStyles}>
+        {this.renderInitialView()}
+      </View>
+    );
+  };
 };
 
 PeopleList.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
-    <Icon name={'user'} size={50} color={tintColor} />
+    <EvilIcon name={'user'} size={50} color={tintColor} />
   )
 };
 
@@ -48,13 +60,19 @@ const mapStateToProps = state => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containerStyles: {
     flex: 1,
     width: 350,
     flexWrap: 'wrap',
     paddingTop: 20,
     paddingLeft: 20,
+  },
+  textStyles: {
+    color: '#333',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
   }
 });
 
-export default connect(mapStateToProps)(PeopleList);
+export default connect(mapStateToProps, { loadInitialContacts })(PeopleList);

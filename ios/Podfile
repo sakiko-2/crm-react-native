@@ -32,6 +32,9 @@ target 'crm' do
 
   use_unimodules!
 
+
   pod 'react-native-material-kit', :path => '../node_modules/react-native-material-kit'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
 end

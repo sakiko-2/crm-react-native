@@ -1,12 +1,12 @@
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import PeopleList from '../components/PeopleList';
-import AddPerson from '../components/AddPerson';
+import AddContact from '../components/AddContact';
 import CompanyList from '../components/CompanyList';
 
 const TabNavigator = createBottomTabNavigator({
   People: PeopleList,
-  Add: AddPerson,
+  Add: AddContact,
   Company: CompanyList,
 },
 {
