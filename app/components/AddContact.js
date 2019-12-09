@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import AntIcon from 'react-native-vector-icons/AntDesign';
@@ -17,11 +18,13 @@ import * as actions from '../actions';
 class AddContact extends Component {
 
   onAddPress = () => {
-    const { firstName, lastName, phone, email, company, project, notes, createNewContact } = this.props;
+    const { firstName, lastName, phone, email, company, project, notes, createNewContact, navigation } = this.props;
 
-    createNewContact({ firstName, lastName, phone, email, company, project, notes });
+    createNewContact({
+      firstName, lastName, phone, email, company, project, notes,
+    });
 
-    this.props.navigation.navigate('People');
+    navigation.navigate('People');
   };
 
   render() {
@@ -33,48 +36,48 @@ class AddContact extends Component {
           <Text style={styles.title}>New Contact</Text>
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Firstname'}
-            onChangeText={value => formUpdate({ prop: 'firstName', value })}
+            placeholder="Firstname"
+            onChangeText={(value) => formUpdate({ prop: 'firstName', value })}
             value={firstName}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Lastname'}
+            placeholder="Lastname"
             value={lastName}
-            onChangeText={value => formUpdate({ prop: 'lastName', value })}
+            onChangeText={(value) => formUpdate({ prop: 'lastName', value })}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Phone'}
+            placeholder="Phone"
             value={phone}
-            onChangeText={value => formUpdate({ prop: 'phone', value })}
+            onChangeText={(value) => formUpdate({ prop: 'phone', value })}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Email'}
+            placeholder="Email"
             value={email}
-            onChangeText={value => formUpdate({ prop: 'email', value })}
+            onChangeText={(value) => formUpdate({ prop: 'email', value })}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Company'}
+            placeholder="Company"
             value={company}
-            onChangeText={value => formUpdate({ prop: 'company', value })}
+            onChangeText={(value) => formUpdate({ prop: 'company', value })}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Project'}
+            placeholder="Project"
             value={project}
-            onChangeText={value => formUpdate({ prop: 'project', value })}
+            onChangeText={(value) => formUpdate({ prop: 'project', value })}
           />
           <MKTextField
             textInputStyle={styles.fieldStyles}
-            placeholder={'Notes'}
+            placeholder="Notes"
             value={notes}
-            onChangeText={value => formUpdate({ prop: 'notes', value })}
+            onChangeText={(value) => formUpdate({ prop: 'notes', value })}
           />
           <TouchableOpacity style={styles.buttonStyles} onPress={this.onAddPress}>
-            <AntIcon name={'plus'} size={22} style={styles.buttonIconStyles}/>
+            <AntIcon name="plus" size={22} style={styles.buttonIconStyles} />
             <Text style={styles.buttonTextStyles}>SAVE</Text>
           </TouchableOpacity>
         </View>
@@ -92,6 +95,16 @@ AddContact.navigationOptions = {
 const mapStateToProps = (state) => {
   const { firstName, lastName, phone, email, company, project, notes } = state;
   return { firstName, lastName, phone, email, company, project, notes };
+};
+
+AddContact.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  phone: PropTypes.number,
+  email: PropTypes.string,
+  company: PropTypes.string,
+  project: PropTypes.string,
+  notes: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

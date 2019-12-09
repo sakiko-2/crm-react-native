@@ -1,7 +1,7 @@
 const initialState = {
-  people: [],
+  contacts: [],
   detailView: false,
-  personSelected: null,
+  contactSelected: null,
   firstName: '',
   lastName: '',
   phone: '',
@@ -16,25 +16,25 @@ export default (state = initialState, action) => {
     case 'INITIAL_FETCH':
       return {
         ...state,
-        people: action.payload,
-      }
-    case 'SELECT_PERSON':
+        contacts: action.payload,
+      };
+    case 'SELECT_CONTACT':
       return {
         ...state,
         detailView: true,
-        personSelected: action.selectId
-      }
+        contactSelected: action.selectId,
+      };
     case 'NONE_SELECTED':
       return {
         ...state,
         detailView: false,
-        personSelected: null
-      }
+        contactSelected: null,
+      };
     case 'FORM_UPDATE':
       return {
         ...state,
-        [action.payload.prop]: action.payload.value
-      }
+        [action.payload.prop]: action.payload.value,
+      };
     case 'NEW_CONTACT':
       return {
         ...state,
@@ -45,12 +45,12 @@ export default (state = initialState, action) => {
         company: '',
         project: '',
         notes: '',
-      }
+      };
     case 'ADD_CONTACT':
       return {
         ...state,
-        ...action.addContact
-      }
+        ...action.addContact,
+      };
     default:
       return state;
   }
