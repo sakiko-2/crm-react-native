@@ -58,3 +58,11 @@ export const loadInitialContacts = () => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const deleteContact = (id) => (dispatch) => {
+  fetch(`${url}/${id}`, { method: 'DELETE' })
+    .then(() => {
+      dispatch({ type: 'DELETE_CONTACT' });
+    })
+    .catch((error) => console.log(error));
+};

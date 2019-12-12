@@ -51,6 +51,12 @@ export default (state = initialState, action) => {
         ...state,
         ...action.addContact,
       };
+    case 'DELETE_CONTACT':
+      return {
+        ...state,
+        detailView: false,
+        contactSelected: null,
+      };
     default:
       return state;
   }

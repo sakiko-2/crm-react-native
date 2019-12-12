@@ -8,17 +8,20 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { getTheme } from 'react-native-material-kit';
+import { getTheme, MKColor } from 'react-native-material-kit';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import * as actions from '../actions';
 
 const theme = getTheme();
 
 const ContactDetail = (props) => {
-  const { contact } = props;
+  const { contact, deleteContact } = props;
 
   return (
     <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -39,30 +42,31 @@ const ContactDetail = (props) => {
           />
         </View>
         <View style={styles.textArea}>
-          <MaterialIcon name="phone" size={40} style={styles.textIcon} />
+          <FeatherIcon name="phone" size={40} style={styles.textIcon} />
           <Text>{contact.phone}</Text>
         </View>
         <View style={styles.textArea}>
-          <MaterialIcon name="email" size={40} style={styles.textIcon} />
+          <FeatherIcon name="mail" size={40} style={styles.textIcon} />
           <Text>{contact.email}</Text>
         </View>
         <View style={styles.textArea}>
-          <MaterialIcon name="assignment" size={40} style={styles.textIcon} />
+          <FontAwesomeIcon name="building-o" size={40} style={styles.textIcon} />
           <Text>{contact.project}</Text>
         </View>
         <View style={styles.textArea}>
-          <MaterialIcon name="mode-edit" size={40} style={styles.textIcon} />
+          <MaterialCommunityIcon name="note-outline" size={40} style={styles.textIcon} />
           <Text>{contact.notes}</Text>
         </View>
+       
         <View>
           <View style={styles.actionArea}>
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
               <FeatherIcon name="phone-call" size={38} style={styles.actionImage} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
               <MaterialIcon name="mail-outline" size={38} style={styles.actionImage} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
               <MaterialIcon name="sms" size={38} style={styles.actionImage} />
             </TouchableOpacity>
           </View>
@@ -71,6 +75,19 @@ const ContactDetail = (props) => {
             <Text>Email</Text>
             <Text>SMS</Text>
           </View>
+        </View>
+        <View style={styles.editArea}>
+          <TouchableOpacity style={[styles.button, styles.edit]}>
+            <FeatherIcon name="edit" size={40} />
+            <Text>Edit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, styles.delete]}
+            onPress={() => { deleteContact(contact._id) }}
+          >
+            <AntDesignIcon name="delete" size={40} />
+            <Text>Delete</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -91,6 +108,7 @@ ContactDetail.propTypes = {
     propTypes: PropTypes.string,
     notes: PropTypes.string,
   }),
+  deleteContact: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -147,6 +165,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingTop: 30,
     marginBottom: -20,
+  },
+  editArea: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+  },
+  button: {
+    borderRadius: 60,
+    margin: 5,
+    paddingTop: 12,
+    paddingRight: 16,
+    paddingBottom: 12,
+    paddingLeft: 16,
+  },
+  delete: {
+    backgroundColor: MKColor.palette_red_500
+  },
+  edit: {
+    backgroundColor: MKColor.Cyan
   },
 });
 
