@@ -66,3 +66,38 @@ export const deleteContact = (id) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const updateContact = (contact) => ({
+  type: 'UPDATE_CONTACT',
+  payload: contact,
+});
+
+export const saveContact = ({
+  firstName, lastName, phone, email, company, project, notes, _id,
+}) => (dispatch) => {
+  fetch(`${url}/${_id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      phone,
+      email,
+      company,
+      project,
+      notes,
+    }),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => console.log(response))
+    .then(() => {
+      dispatch({ type: 'SAVE_CONTACT' });
+    })
+    .catch((error) => console.log(error));
+};
+
+export const cancelUpdateContact = () => ({
+  type: 'CANCEL_UPDATE_CONTACT',
+});

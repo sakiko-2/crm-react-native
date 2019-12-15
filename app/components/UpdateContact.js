@@ -8,35 +8,30 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import AntIcon from 'react-native-vector-icons/AntDesign';
-import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import { MKTextField } from 'react-native-material-kit';
 
 import * as actions from '../actions';
+import CloseButton from './CloseButton';
 
 
-class AddContact extends Component {
-  componentDidMount() {
-    this.props.newContact();
-  }
+class UpdateContact extends Component {
+  onUpdatePress = () => {
+    const { firstName, lastName, phone, email, company, project, notes, _id, saveContact } = this.props;
 
-  onAddPress = () => {
-    const { firstName, lastName, phone, email, company, project, notes, createNewContact, navigation } = this.props;
-
-    createNewContact({
-      firstName, lastName, phone, email, company, project, notes,
+    saveContact({
+      firstName, lastName, phone, email, company, project, notes, _id,
     });
-
-    navigation.navigate('Contact');
   };
 
   render() {
-    const { firstName, lastName, phone, email, company, project, notes, formUpdate } = this.props;
+    const { firstName, lastName, phone, email, company, project, notes, formUpdate, cancelUpdateContact } = this.props;
 
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.formStyles}>
-          <Text style={styles.title}>New Contact</Text>
+          <CloseButton onPress={() => cancelUpdateContact()} />
+          <Text style={styles.title}>Edit Contact</Text>
           <MKTextField
             textInputStyle={styles.fieldStyles}
             placeholder="Firstname"
@@ -79,28 +74,22 @@ class AddContact extends Component {
             value={notes}
             onChangeText={(value) => formUpdate({ prop: 'notes', value })}
           />
-          <TouchableOpacity style={styles.buttonStyles} onPress={this.onAddPress}>
-            <AntIcon name="plus" size={22} style={styles.buttonIconStyles} />
-            <Text style={styles.buttonTextStyles}>SAVE</Text>
+          <TouchableOpacity style={styles.buttonStyles} onPress={this.onUpdatePress}>
+            <FeatherIcon name="save" size={22} style={styles.buttonIconStyles} />
+            <Text style={styles.buttonTextStyles}>UPDATE</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
     );
   }
-};
-
-AddContact.navigationOptions = {
-  tabBarIcon: ({tintColor}) => (
-    <EvilIcon name={'plus'} size={50} color={tintColor} />
-  )
-};
+}
 
 const mapStateToProps = (state) => {
-  const { firstName, lastName, phone, email, company, project, notes } = state;
-  return { firstName, lastName, phone, email, company, project, notes };
+  const { firstName, lastName, phone, email, company, project, notes, _id, navigation } = state;
+  return { firstName, lastName, phone, email, company, project, notes, _id, navigation };
 };
 
-AddContact.propTypes = {
+UpdateContact.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   phone: PropTypes.string,
@@ -137,12 +126,12 @@ const styles = StyleSheet.create({
   },
   formStyles: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    // paddingLeft: 20,
+    // paddingRight: 20,
     justifyContent: 'space-between',
   },
 });
 
-export default connect(mapStateToProps, actions)(AddContact);
+export default connect(mapStateToProps, actions)(UpdateContact);
