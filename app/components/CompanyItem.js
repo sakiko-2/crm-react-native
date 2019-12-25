@@ -20,10 +20,10 @@ const CompanyItem = (props) => {
         size={50}
         style={styles.icon}
       />
-        <Text style={[theme.cardTitleStyle, styles.title]}>{company}</Text>
-        <Text style={[theme.cardActionStyle, styles.action]}>
-          {firstName} {lastName}
-        </Text>
+      <Text style={[theme.cardTitleStyle, styles.title]}>{company}</Text>
+      <Text style={[theme.cardActionStyle, styles.subtitle]}>
+        {firstName} {lastName}
+      </Text>
     </View>
   );
 };
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     left: 60,
     width: 310,
   },
-  action: {
+  subtitle: {
     color: '#fff',
     backgroundColor: '#000',
   },

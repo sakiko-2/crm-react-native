@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheme } from 'react-native-material-kit';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/AntDesign';
 import * as actions from '../actions';
 
 const theme = getTheme();
@@ -21,13 +21,13 @@ const ContactItem = (props) => {
       <View style={[theme.cardStyle, styles.card]}>
         <Icon
           name="user"
-          size={100}
+          size={60}
           style={styles.icon}
         />
         <Text style={[theme.cardTitleStyle, styles.title]}>
           {contacts.firstName} {contacts.lastName}
         </Text>
-        <Text style={[theme.cardActionStyle, styles.action]}>
+        <Text style={[theme.cardActionStyle, styles.subtitle]}>
           {contacts.company}
         </Text>
       </View>
@@ -47,19 +47,30 @@ ContactItem.propTypes = {
 const styles = StyleSheet.create({
   card: {
     marginTop: 20,
+    marginRight: 12,
+    marginLeft: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 1.0,
+    shadowRadius: 5,
+    elevation: 1,
+    width: 350,
   },
   title: {
     top: 16,
-    left: 80,
+    left: 75,
     fontSize: 22,
+    width: 310,
   },
-  action: {
+  subtitle: {
     color: '#fff',
     backgroundColor: '#000',
   },
   icon: {
-    top: 5,
-    left: 0,
+    paddingTop: 10,
+    paddingBottom: 10,
+    textAlign: 'center',
+    width: 75,
   },
 });
 

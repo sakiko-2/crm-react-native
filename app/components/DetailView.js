@@ -10,7 +10,6 @@ import {
 import { connect } from 'react-redux';
 import { getTheme, MKColor } from 'react-native-material-kit';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
@@ -42,7 +41,7 @@ class DetailView extends Component {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <View style={[theme.cardStyle], styles.card}>
-            <EvilIcon name="user" size={100} style={styles.userIcon} />
+            <AntDesignIcon name="user" size={60} style={styles.userIcon} />
             <Text style={[theme.cardTitleStyle, styles.title1]}>
               {contact.firstName} {contact.lastName}
             </Text>
@@ -75,13 +74,13 @@ class DetailView extends Component {
           <View>
             <View style={styles.actionArea}>
               <TouchableOpacity>
-                <FeatherIcon name="phone-call" size={38} />
+                <FeatherIcon name="phone-outgoing" size={38} />
               </TouchableOpacity>
               <TouchableOpacity>
                 <MaterialIcon name="mail-outline" size={38} />
               </TouchableOpacity>
               <TouchableOpacity>
-                <MaterialIcon name="sms" size={38} />
+                <MaterialCommunityIcon name="comment-text-outline" size={38} />
               </TouchableOpacity>
             </View>
             <View style={styles.actionArea}>
@@ -118,13 +117,14 @@ const mapStateToProps = (state) => ({
 });
 
 DetailView.propTypes = {
-  contact: PropTypes.array,
-  toUpdate: PropTypes.func,
-}
+  contact: PropTypes.object,
+  toUpdate: PropTypes.bool,
+};
 
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
+    marginLeft: 10,
   },
   container: {
     width: 350,
@@ -139,39 +139,37 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   userIcon: {
-    paddingTop: 10,
-    marginLeft: -5,
-    width: 84,
+    paddingTop: 20,
+    paddingBottom: 10,
+    textAlign: 'center',
+    width: 60,
   },
   title1: {
     top: 8,
-    left: 80,
+    left: 60,
     fontSize: 24,
     justifyContent: 'center',
   },
   title2: {
     top: 42,
-    left: 82,
+    left: 60,
     fontSize: 18,
     justifyContent: 'center',
   },
   closeIcon: {
-    paddingRight: 10,
+    marginRight: -5,
   },
   textArea: {
     flexDirection: 'row',
+    alignItems: 'center',
     paddingTop: 6,
     paddingBottom: 6,
-    paddingLeft: 20,
-    width: 260,
-    alignItems: 'center',
   },
   textIcon: {
     color: '#333',
-    paddingRight: 10,
-  },
-  projectIcon: {
-    marginLeft: 4,
+    textAlign: 'center',
+    marginRight: 10,
+    width: 40,
   },
   actionArea: {
     flexDirection: 'row',

@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     paddingBottom: 10,
-    // paddingLeft: 20,
-    // paddingRight: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
     justifyContent: 'space-between',
   },
 });

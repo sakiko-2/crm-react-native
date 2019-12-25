@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/Feather';
 import CompanyItem from './CompanyItem';
 
 const CompanyList = (props) => (
@@ -25,7 +25,7 @@ const CompanyList = (props) => (
 
 CompanyList.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
-    <Icon name={'archive'} size={50} color={tintColor} />
+    <Icon name={'archive'} size={40} color={tintColor} />
   )
 };
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   containerStyles: {
     flex: 1,
     flexWrap: 'wrap',
-    backgroundColor: '#fff',
+    backgroundColor: '#f4f7f6',
     paddingTop: 25,
   },
 });

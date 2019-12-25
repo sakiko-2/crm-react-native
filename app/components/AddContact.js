@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import AntIcon from 'react-native-vector-icons/AntDesign';
-import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import { MKTextField } from 'react-native-material-kit';
 
 import * as actions from '../actions';
@@ -91,7 +90,7 @@ class AddContact extends Component {
 
 AddContact.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
-    <EvilIcon name={'plus'} size={50} color={tintColor} />
+    <AntIcon name={'adduser'} size={40} color={tintColor} />
   )
 };
 
@@ -137,7 +136,7 @@ const styles = StyleSheet.create({
   },
   formStyles: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 74,
     paddingBottom: 10,
     paddingLeft: 20,
     paddingRight: 20,

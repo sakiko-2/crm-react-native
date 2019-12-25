@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 import ContactItem from './ContactItem';
 import ContactDetail from './ContactDetail';
 import { loadInitialContacts } from '../actions';
@@ -52,7 +52,7 @@ class ContactList extends Component {
 
 ContactList.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
-    <EvilIcon name={'user'} size={50} color={tintColor} />
+    <AntIcon name={'contacts'} size={40} color={tintColor} />
   )
 };
 
@@ -69,10 +69,8 @@ ContactList.propTypes = {
 const styles = StyleSheet.create({
   containerStyles: {
     flex: 1,
-    width: 350,
     flexWrap: 'wrap',
     paddingTop: 20,
-    paddingLeft: 20,
   },
   textStyles: {
     color: '#333',
