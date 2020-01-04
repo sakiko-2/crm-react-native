@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { getTheme } from 'react-native-material-kit';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const theme = getTheme();
 
@@ -16,7 +16,7 @@ const CompanyItem = (props) => {
   return (
     <View style={[theme.cardStyle, styles.card]}>
       <Icon
-        name="business"
+        name="building-o"
         size={50}
         style={styles.icon}
       />
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   title: {
-    fontSize: 20,
-    top: 12,
-    left: 60,
+    fontSize: 19,
+    top: 15,
+    left: 55,
     width: 310,
   },
   subtitle: {
@@ -59,10 +59,10 @@ const styles = StyleSheet.create({
   },
   icon: {
     top: 5,
-    left: 0,
     paddingTop: 17,
     paddingBottom: 22,
-    paddingLeft: 10,
+    textAlign: 'center',
+    width: 70,
   },
 });
 
