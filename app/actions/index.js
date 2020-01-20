@@ -1,6 +1,4 @@
-import { myConfig } from '../../config';
-
-const url = `${myConfig.ROOT_URL}/contact`;
+const url = 'https://crm-api-node.herokuapp.com/contact';
 
 export const selectContact = (contactId) => ({
   type: 'SELECT_CONTACT',
