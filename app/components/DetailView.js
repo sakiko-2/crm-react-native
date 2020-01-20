@@ -21,12 +21,6 @@ import * as actions from '../actions';
 const theme = getTheme();
 
 class DetailView extends Component {
-  update() {
-    const { contact, updateContact } = this.props;
-
-    updateContact(contact);
-  }
-
   openLink(url) {
     const canOpen = Linking.canOpenURL(url);
 
@@ -38,7 +32,7 @@ class DetailView extends Component {
   }
 
   render() {
-    const { contact, deleteContact, noneSelected } = this.props;
+    const { contact, deleteContact, noneSelected, updateContact } = this.props;
 
     if (!contact) {
       return (
@@ -103,7 +97,7 @@ class DetailView extends Component {
           <View style={styles.editArea}>
             <TouchableOpacity
               style={[styles.button, styles.edit]}
-              onPress={() => { this.update(contact); }}
+              onPress={() => { updateContact(contact); }}
             >
               <FeatherIcon name="edit" size={40} />
               <Text>Edit</Text>
@@ -130,6 +124,9 @@ const mapStateToProps = (state) => ({
 DetailView.propTypes = {
   contact: PropTypes.object,
   toUpdate: PropTypes.bool,
+  deleteContact: PropTypes.func,
+  noneSelected: PropTypes.func,
+  updateContact: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
