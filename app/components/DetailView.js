@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
+  Linking,
   ScrollView,
   StyleSheet,
   Text,
@@ -24,6 +25,16 @@ class DetailView extends Component {
     const { contact, updateContact } = this.props;
 
     updateContact(contact);
+  }
+
+  openLink(url) {
+    const canOpen = Linking.canOpenURL(url);
+
+    if (!canOpen) {
+      return;
+    }
+
+    Linking.openURL(url);
   }
 
   render() {
@@ -73,13 +84,13 @@ class DetailView extends Component {
           </View>
           <View>
             <View style={styles.actionArea}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => this.openLink(`tel:${contact.phone}`)}>
                 <FeatherIcon name="phone-outgoing" size={38} />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => this.openLink(`mailto:${contact.email}`)}>
                 <MaterialIcon name="mail-outline" size={38} />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => this.openLink(`sms:${contact.phone}`)}>
                 <MaterialCommunityIcon name="comment-text-outline" size={38} />
               </TouchableOpacity>
             </View>
