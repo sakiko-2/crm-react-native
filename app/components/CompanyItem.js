@@ -20,10 +20,12 @@ const CompanyItem = (props) => {
         size={50}
         style={styles.icon}
       />
-      <Text style={[theme.cardTitleStyle, styles.title]}>{company}</Text>
-      <Text style={[theme.cardActionStyle, styles.subtitle]}>
-        {firstName} {lastName}
-      </Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>{company}</Text>
+        <Text style={styles.subtitle}>
+          {firstName} {lastName}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -38,29 +40,35 @@ CompanyItem.propTypes = {
 
 const styles = StyleSheet.create({
   card: {
-    marginTop: 15,
-    marginRight: 15,
-    marginLeft: 15,
+    display: 'flex',
+    flexDirection: 'row',
+    height: 88,
+    marginTop: 8,
+    marginHorizontal: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 1.0,
     shadowRadius: 5,
     elevation: 1,
   },
+  content: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+  },
   title: {
-    fontSize: 19,
-    top: 15,
-    left: 55,
-    width: 310,
+    color: '#323232',
+    fontSize: 16,
+    fontWeight: '400',
+    top: 0,
   },
   subtitle: {
-    color: '#fff',
-    backgroundColor: '#000',
+    color: '#555',
+    paddingRight: 10,
+    textAlign: 'right',
   },
   icon: {
-    top: 5,
-    paddingTop: 17,
-    paddingBottom: 22,
+    alignSelf: 'center',
+    color: '#555',
     textAlign: 'center',
     width: 70,
   },

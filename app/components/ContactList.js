@@ -47,8 +47,8 @@ class ContactList extends Component {
         {this.renderInitialView()}
       </View>
     );
-  };
-};
+  }
+}
 
 ContactList.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   containerStyles: {
     flex: 1,
     flexWrap: 'wrap',
-    paddingTop: 20,
+    paddingTop: 25,
   },
   textStyles: {
     color: '#333',

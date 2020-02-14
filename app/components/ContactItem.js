@@ -24,12 +24,14 @@ const ContactItem = (props) => {
           size={60}
           style={styles.icon}
         />
-        <Text style={[theme.cardTitleStyle, styles.title]}>
-          {contacts.firstName} {contacts.lastName}
-        </Text>
-        <Text style={[theme.cardActionStyle, styles.subtitle]}>
-          {contacts.company}
-        </Text>
+        <View style={styles.content}>
+          <Text style={styles.title}>
+            {contacts.firstName} {contacts.lastName}
+          </Text>
+          <Text style={styles.subtitle}>
+            {contacts.company}
+          </Text>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -46,31 +48,36 @@ ContactItem.propTypes = {
 
 const styles = StyleSheet.create({
   card: {
-    marginTop: 20,
-    marginRight: 12,
-    marginLeft: 12,
+    display: 'flex',
+    flexDirection: 'row',
+    height: 88,
+    marginTop: 8,
+    marginHorizontal: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 1.0,
     shadowRadius: 5,
     elevation: 1,
-    width: 350,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'space-evenly',
   },
   title: {
-    top: 16,
-    left: 75,
-    fontSize: 22,
-    width: 310,
+    color: '#323232',
+    fontSize: 16,
+    fontWeight: '400',
   },
   subtitle: {
-    color: '#fff',
-    backgroundColor: '#000',
+    color: '#555',
+    paddingRight: 10,
+    textAlign: 'right',
   },
   icon: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    alignSelf: 'center',
+    color: '#555',
     textAlign: 'center',
-    width: 75,
+    width: 70,
   },
 });
 
