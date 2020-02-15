@@ -26,7 +26,7 @@ const CompanyList = (props) => (
 CompanyList.navigationOptions = {
   tabBarIcon: ({tintColor}) => (
     <Icon name={'archive'} size={40} color={tintColor} />
-  )
+  ),
 };
 
 CompanyList.propTypes = {
