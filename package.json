@@ -5,7 +5,8 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "dependencies": {
     "expo": "^35.0.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "24.9.0",
+    "jest-enzyme": "^7.1.2",
     "jest-expo": "^35.0.0",
     "jetifier": "^1.6.4",
     "metro-react-native-babel-preset": "0.56.0",
@@ -47,7 +49,7 @@
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*)"
+      "node_modules/(?!(jest-)?react-native|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|native-base)"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [

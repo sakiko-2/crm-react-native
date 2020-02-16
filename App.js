@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
-import App from './app/components/index';
+import App from './app/components';
 
 export default App;
