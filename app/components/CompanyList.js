@@ -16,7 +16,8 @@ const CompanyList = (props) => (
         company: value.company,
         firstName: value.firstName,
         lastName: value.lastName,
-      })).sort((a, b) => a.company - b.company)}
+      })).filter((contact) => contact.company !== '')
+        .sort((a, b) => a.company > b.company)}
       renderItem={({ item }) => <CompanyItem companies={item} />}
       keyExtractor={(item, index) => index.toString()}
     />
